@@ -2,8 +2,6 @@
 
 This repository contains example code for a [question at StackOverflow](https://stackoverflow.com/questions/68172488/django-channels-group-send-getting-delayed-while-sending-to-active-window-whe).
 
-![Group send example](channels_group_send.gif)
-
 The question: https://stackoverflow.com/questions/68172488/django-channels-group-send-getting-delayed-while-sending-to-active-window-whe
 
 Related Django documentation: https://channels.readthedocs.io/en/stable/tutorial/part_2.html#write-your-first-consumer
@@ -30,16 +28,32 @@ Chat URL (incognito/private session, i.e., user not logged in): http://127.0.0.1
 
 Answer:
 
-The working version of the code is avaliable at [my git repository](https://github.com/mikbuch/channels_send_chat).
+The working version of the code is available at [my git repository](https://github.com/mikbuch/channels_send_chat).
 
 I tried to recreate your example, but you shared only parts of your code. I had to fill out the missing parts. In all, it was better to just follow the [example from the documentation](https://channels.readthedocs.io/en/stable/tutorial/part_2.html#write-your-first-consumer) exactly. The repository I shared is adapted to your code, to reassemble it as closely as possible.
 
-I don't know exactly why you were getting the delay, but the application example I shared has exactly the same version of Python, and the packages, as you:
+**User logged-in in a single place**
+
+On one browser (Safari) the user is logged-in, on the other (Chrome) use is not logged in.
+
+![Group send example](channels_group_send.gif)
+
+The application example I shared has exactly the same version of Python, and the packages, as you:
 
  > Python 3.9.5, Django 3.2, Channels 3.0.3
  
-and everything works correctly when running it on macOS (i.e., no delays).
+When the user is logged in one browser/window, verything works correctly when running it on macOS (i.e., no delays).
 
-If you are still interested in this subject, please try to run my example and let me know if you are still getting the error (the delays).
+**User logged-in in several different places**
 
-Anyways, maybe someone else will find my example helpful, when having a similar problem, cheers.
+(Different browsers)
+
+I also tried the following scenario:
+
+ * Safari -- user logged in
+ * Fifefox -- user logged in
+ * Chrome -- user **not** logged in
+
+and now I was getting the same delays as you!
+
+Now I will try updating to Django 4.0 and channels 3.0.4 and I will see if this problem is still the case.
