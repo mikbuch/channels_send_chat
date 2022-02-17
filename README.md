@@ -56,4 +56,6 @@ I also tried the following scenario:
 
 and now I was getting the same delays as you!
 
+Link to the video showcasing the delays: https://www.youtube.com/watch?v=b-1kT--Qx0w
+
 Now I will try updating to Django 4.0 and channels 3.0.4 and I will see if this problem is still the case.
